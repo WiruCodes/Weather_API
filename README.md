@@ -4,7 +4,7 @@ This application is made with react, chakra ui, react-router, auth0 and the open
 
 ## Responsiveness
 
-The elements of the app are fully responsive and can me used with mobile.
+The elements of the app are fully responsive and can be used with mobile.
 
 ## Authentication
 
