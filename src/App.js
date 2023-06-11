@@ -25,7 +25,7 @@ function App() {
     if (!isLoading && isAuthenticated) {
       setUserData({
         name: user.nickname,
-        accountLink: `https://github.com/${user.nickname}`
+        accountLink: `https://github.com/${user.nickname}`,
       });
     }
   }, [isLoading]);

@@ -4,6 +4,19 @@ import { Link } from "react-router-dom";
 function NavBar({ isLoading, isAuthenticated, loginWithRedirect, logout }) {
   return (
     <Box position="fixed" top={0} w={"100%"} h={14} bgColor="red.700">
+      <Text
+        h="100%"
+        display={['none', 'none', 'flex', 'flex']}
+        justifyContent="space-between"
+        alignItems="center"
+        position="absolute"
+        left="0"
+        ml={6}
+        fontSize={32}
+        fontWeight='black'
+      >
+        Weather Generator
+      </Text>
       <Box
         w={"300px"}
         h="100%"

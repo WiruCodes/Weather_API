@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getWeatherDetails } from "../../library/weather/weatherFunctionLibrary";
 
-function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation, userData }) {
+function HomePage({
+  isLoading,
+  isAuthenticated,
+  setCityWeather,
+  setLocation,
+  userData,
+}) {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [cityError, setCityError] = useState(false);
@@ -29,9 +35,13 @@ function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation, use
           Search Weather For A City
         </Text>
       </Box>
-      <Box textAlign='center' pb={30}>
-        <Text>Hello <b>{userData.name}</b>, Enjoy your stay!</Text>
-        <Link href={userData.accountLink} isExternal>{userData.accountLink}</Link>
+      <Box textAlign="center" pb={30}>
+        <Text>
+          Hello <b>{userData.name}</b>, Enjoy your stay!
+        </Text>
+        <Link href={userData.accountLink} isExternal>
+          {userData.accountLink}
+        </Link>
       </Box>
       <Box display="flex" alignItems="center">
         <Input
