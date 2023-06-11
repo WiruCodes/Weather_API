@@ -6,30 +6,37 @@ function NavBar({ isLoading, isAuthenticated, loginWithRedirect, logout }) {
     <Box position="fixed" top={0} w={"100%"} h={14} bgColor="red.700">
       <Text
         h="100%"
-        display={['none', 'none', 'flex', 'flex']}
+        display={["none", "none", "flex", "flex"]}
         justifyContent="space-between"
         alignItems="center"
         position="absolute"
         left="0"
         ml={6}
         fontSize={32}
-        fontWeight='black'
+        fontWeight="black"
       >
         Weather Generator
       </Text>
       <Box
-        w={"300px"}
+        w={["80%", "80%", "300px", "300px"]}
         h="100%"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
         position="absolute"
         right="0"
-        mr={6}
+        mr={[6, 6, 6, 6]}
+        ml={[6, 6, 0, 0]}
       >
-        <Link to="/">Landing</Link>
-        <Link to="/home">Home</Link>
-        <Link to="/weather">Weather</Link>
+        <Link to="/">
+          <Text fontWeight="bold">Landing</Text>
+        </Link>
+        <Link to="/home">
+          <Text fontWeight="bold">Home</Text>
+        </Link>
+        <Link to="/weather">
+          <Text fontWeight="bold">Weather</Text>
+        </Link>
         <Button
           isLoading={isLoading}
           bgColor="blue.700"

@@ -1,4 +1,4 @@
-let apiKey = "3bb8762984aba29d796b320d1fe51c5e";
+import { getWeatherConfig } from "../../config";
 
 export function getWeatherDetails(
   setCity,
@@ -8,6 +8,7 @@ export function getWeatherDetails(
   setLocation,
   navigate
 ) {
+  let apiKey = getWeatherConfig();
   fetch(
     `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${1}&appid=${apiKey}`
   )

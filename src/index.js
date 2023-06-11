@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { getConfig } from "./config";
+import { getAuthConfig } from "./config";
 
 localStorage.setItem("chakra-ui-color-mode", "dark");
 
-const config = getConfig();
+const config = getAuthConfig();
 
 const providerConfig = {
   domain: config.domain,
