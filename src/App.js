@@ -24,7 +24,6 @@ function App() {
           path="home"
           element={
             <HomePage
-              cityWeather={setCityWeather}
               setCityWeather={setCityWeather}
               setLocation={setLocation}
             />

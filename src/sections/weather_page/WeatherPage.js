@@ -22,14 +22,17 @@ function WeatherPage({ cityWeather, location }) {
       margin="auto"
     >
       <Box width="100%" mb="100px" display="flex" justifyContent="center">
-        <Text fontSize={[50]} fontWeight='black'>{location !== "" ? location : 'Location'}</Text>
+        <Text fontSize={[38, 38, 50, 50]} fontWeight='black'>{location !== "" ? location : 'Location'}</Text>
       </Box>
+
+      {/* Desktop display all weather details */}
       <Grid
         w="100%"
         templateRows="repeat(1, 1fr)"
         templateColumns="repeat(6, 1fr)"
         gap={6}
         textAlign="center"
+        display={['none', 'none', 'grid', 'grid']}
       >
         {weatherDetailNames.map((name) => {
           return (
@@ -46,6 +49,31 @@ function WeatherPage({ cityWeather, location }) {
             </GridItem>
           );
         })}
+      </Grid>
+
+      {/* Mobile display all weather details */}
+
+      <Grid
+        w="100%"
+        templateRows="repeat(1, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        gap={6}
+        textAlign="center"
+        display={['grid', 'grid', 'none', 'none']}
+      >
+        <GridItem w="100%">
+          <Text fontWeight="bold">Date(mm/dd/yyyy)</Text>
+        </GridItem>
+        <GridItem w="100%">
+          <Text fontWeight="bold">Temperature (F)</Text>
+        </GridItem>
+        <GridItem w="100%">
+          <Text>{cityWeather.date}</Text>
+        </GridItem>
+        <GridItem w="100%">
+          <Text>{cityWeather.temp}</Text>
+        </GridItem>
+
       </Grid>
 
       <Box width="100%" mt="100px" display="flex" justifyContent="center">
