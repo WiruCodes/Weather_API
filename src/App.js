@@ -23,7 +23,10 @@ function App() {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      setUserData(user, isAuthenticated);
+      setUserData({
+        name: user.nickname,
+        accountLink: `https://github.com/${user.nickname}`
+      });
     }
   }, [isLoading]);
 
@@ -54,6 +57,7 @@ function App() {
               isAuthenticated={isAuthenticated}
               setCityWeather={setCityWeather}
               setLocation={setLocation}
+              userData={userData}
             />
           }
         />

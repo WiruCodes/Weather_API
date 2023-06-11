@@ -1,9 +1,9 @@
-import { Box, Button, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Input, Link, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getWeatherDetails } from "../../library/weather/weatherFunctionLibrary";
 
-function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation }) {
+function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation, userData }) {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [cityError, setCityError] = useState(false);
@@ -28,6 +28,10 @@ function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation }) {
         <Text fontSize={[36, 36, 50, 50]} fontWeight="black" textAlign="center">
           Search Weather For A City
         </Text>
+      </Box>
+      <Box textAlign='center' pb={30}>
+        <Text>Hello <b>{userData.name}</b>, Enjoy your stay!</Text>
+        <Link href={userData.accountLink} isExternal>{userData.accountLink}</Link>
       </Box>
       <Box display="flex" alignItems="center">
         <Input
