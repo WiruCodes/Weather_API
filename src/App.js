@@ -3,7 +3,8 @@ import NavBar from "./sections/nav/NavBar";
 import WeatherPage from "./sections/weather_page/WeatherPage";
 import HomePage from "./sections/home_page/HomePage";
 import LandingPage from "./sections/landing_page/LandingPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
   const [cityWeather, setCityWeather] = useState({
@@ -14,12 +15,23 @@ function App() {
     pressure: "pressure",
     humidity: "humidity",
   });
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState('');
+  const [userData, setUserData] = useState({});
+
+  const { loginWithRedirect, isAuthenticated, isLoading, user, logout  } = useAuth0();
+  
+  useEffect(() => {
+    if(!isLoading && isAuthenticated) {
+      setUserData(user, isAuthenticated);
+    } 
+  }, [isLoading])
+
+
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage loginWithRedirect={loginWithRedirect} isLoading={isLoading} isAuthenticated={isAuthenticated} />} />
         <Route
           path="home"
           element={
