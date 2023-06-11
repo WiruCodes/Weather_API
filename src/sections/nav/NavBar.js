@@ -17,7 +17,7 @@ function NavBar() {
         <Link to="/">Landing</Link>
         <Link to="/home">Home</Link>
         <Link to="/weather">Weather</Link>
-        <Button bgColor="blue.700" size="md">
+        <Button bgColor="blue.700" _hover={{ bg: 'blue.500' }} size="md">
           Login
         </Button>
       </Box>

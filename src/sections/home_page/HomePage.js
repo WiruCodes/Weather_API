@@ -37,6 +37,7 @@ function HomePage({ setCityWeather, setLocation }) {
           }}
           w="300px"
           mr="5"
+          textAlign='center'
           value={city}
         />
         <Button

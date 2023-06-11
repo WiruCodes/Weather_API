@@ -7,12 +7,12 @@ import { useState } from "react";
 
 function App() {
   const [cityWeather, setCityWeather] = useState({
-    date: "",
-    temp: "",
-    description: "",
-    main: "",
-    pressure: "",
-    humidity: "",
+    date: "date",
+    temp: "temp",
+    description: "desc",
+    main: "main",
+    pressure: "pressure",
+    humidity: "humidity",
   });
   const [location, setLocation] = useState('')
   return (
