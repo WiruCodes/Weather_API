@@ -14,6 +14,7 @@ function App() {
     pressure: "",
     humidity: "",
   });
+  const [location, setLocation] = useState('')
   return (
     <BrowserRouter>
       <NavBar />
@@ -25,10 +26,11 @@ function App() {
             <HomePage
               cityWeather={setCityWeather}
               setCityWeather={setCityWeather}
+              setLocation={setLocation}
             />
           }
         />
-        <Route path="weather" element={<WeatherPage />} />
+        <Route path="weather" element={<WeatherPage cityWeather={cityWeather} location={location} />} />
       </Routes>
     </BrowserRouter>
   );

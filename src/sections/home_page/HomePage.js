@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getWeatherDetails } from "../../library/weather/weatherFunctionLibrary";
 
-function HomePage({ cityWeather, setCityWeather }) {
+function HomePage({ cityWeather, setCityWeather, setLocation }) {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [cityError, setCityError] = useState(false);
@@ -16,13 +16,26 @@ function HomePage({ cityWeather, setCityWeather }) {
       alignItems="center"
       top="250px"
     >
+      <Box mb='100px'><Text fontSize={50} fontWeight='black' textAlign='center'>Search Weather For A City</Text></Box>
       <Box display="flex" alignItems="center">
         <Input
           onChange={(e) => {
             setCity(e.target.value);
             setCityError(false);
           }}
-          w="200px"
+          onKeyDown={(e) => {
+            if(e.key === 'Enter') {
+              getWeatherDetails(
+                setCity,
+                city,
+                setCityError,
+                setCityWeather,
+                setLocation,
+                navigate
+              )
+            }
+          }}
+          w="300px"
           mr="5"
           value={city}
         />
@@ -33,6 +46,7 @@ function HomePage({ cityWeather, setCityWeather }) {
               city,
               setCityError,
               setCityWeather,
+              setLocation,
               navigate
             )
           }

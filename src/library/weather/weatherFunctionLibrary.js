@@ -5,6 +5,7 @@ export function getWeatherDetails(
   city,
   setCityError,
   setCityWeather,
+  setLocation,
   navigate
 ) {
   fetch(
@@ -28,6 +29,7 @@ export function getWeatherDetails(
             pressure: weatherJson.main.pressure,
             humidity: weatherJson.main.humidity,
           });
+          setLocation(weatherJson.name);
           setCity("");
           console.log(weatherJson);
           navigate("/weather");
