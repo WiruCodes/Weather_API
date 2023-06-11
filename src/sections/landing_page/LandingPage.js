@@ -25,7 +25,7 @@ function LandingPage({ loginWithRedirect, isLoading, isAuthenticated }) {
             mt={10}
             bgColor="red.700"
             _hover={{ bg: "red.500" }}
-            onClick={() => navigate('home')}
+            onClick={() => navigate("home")}
           >
             Get Weather
           </Button>

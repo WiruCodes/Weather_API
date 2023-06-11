@@ -15,33 +15,61 @@ function App() {
     pressure: "pressure",
     humidity: "humidity",
   });
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState("");
   const [userData, setUserData] = useState({});
 
-  const { loginWithRedirect, isAuthenticated, isLoading, user, logout  } = useAuth0();
-  
-  useEffect(() => {
-    if(!isLoading && isAuthenticated) {
-      setUserData(user, isAuthenticated);
-    } 
-  }, [isLoading])
+  const { loginWithRedirect, isAuthenticated, isLoading, user, logout } =
+    useAuth0();
 
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      setUserData(user, isAuthenticated);
+    }
+  }, [isLoading]);
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar
+        isLoading={isLoading}
+        isAuthenticated={isAuthenticated}
+        loginWithRedirect={loginWithRedirect}
+        logout={logout}
+      />
       <Routes>
-        <Route path="/" element={<LandingPage loginWithRedirect={loginWithRedirect} isLoading={isLoading} isAuthenticated={isAuthenticated} />} />
+        <Route
+          path="/"
+          element={
+            <LandingPage
+              loginWithRedirect={loginWithRedirect}
+              isLoading={isLoading}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
         <Route
           path="home"
           element={
             <HomePage
+              isLoading={isLoading}
+              isAuthenticated={isAuthenticated}
               setCityWeather={setCityWeather}
               setLocation={setLocation}
             />
           }
         />
-        <Route path="weather" element={<WeatherPage cityWeather={cityWeather} location={location} />} />
+        <Route
+          path="weather"
+          isLoading={isLoading}
+          isAuthenticated={isAuthenticated}
+          element={
+            <WeatherPage
+              isLoading={isLoading}
+              isAuthenticated={isAuthenticated}
+              cityWeather={cityWeather}
+              location={location}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

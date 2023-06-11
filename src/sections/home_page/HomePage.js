@@ -1,14 +1,22 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getWeatherDetails } from "../../library/weather/weatherFunctionLibrary";
 
-function HomePage({ setCityWeather, setLocation }) {
+function HomePage({ isLoading, isAuthenticated, setCityWeather, setLocation }) {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [cityError, setCityError] = useState(false);
 
-  return (
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      navigate("/");
+    }
+  }, [isLoading, isAuthenticated]);
+
+  return isLoading || !isAuthenticated ? (
+    <Text>Loading...</Text>
+  ) : (
     <Box
       position="relative"
       display="flex"
@@ -16,7 +24,11 @@ function HomePage({ setCityWeather, setLocation }) {
       alignItems="center"
       top="250px"
     >
-      <Box mb='100px'><Text fontSize={[36, 36, 50, 50]} fontWeight='black' textAlign='center'>Search Weather For A City</Text></Box>
+      <Box mb="100px">
+        <Text fontSize={[36, 36, 50, 50]} fontWeight="black" textAlign="center">
+          Search Weather For A City
+        </Text>
+      </Box>
       <Box display="flex" alignItems="center">
         <Input
           onChange={(e) => {
@@ -24,7 +36,7 @@ function HomePage({ setCityWeather, setLocation }) {
             setCityError(false);
           }}
           onKeyDown={(e) => {
-            if(e.key === 'Enter') {
+            if (e.key === "Enter") {
               getWeatherDetails(
                 setCity,
                 city,
@@ -32,12 +44,12 @@ function HomePage({ setCityWeather, setLocation }) {
                 setCityWeather,
                 setLocation,
                 navigate
-              )
+              );
             }
           }}
           w="300px"
           mr="5"
-          textAlign='center'
+          textAlign="center"
           value={city}
         />
         <Button
